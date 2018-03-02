@@ -308,22 +308,7 @@ end`,
   end
 
   val trim = fn (str: String, subset: String) -> String
-    var trimmed = str
-    var left = false
-    var right = false
-    repeat i, v in subset
-      if trimmed[0] == v && !left
-        trimmed = String.slice(trimmed, 1, String.count(trimmed))
-        left = true
-      end
-      if String.last(trimmed) == v && !right
-        trimmed = String.slice(trimmed, 0, String.count(trimmed) - 1)
-        right = true
-      end
-      if left && right
-        break
-      end
-    end
+    var trimmed = String.trimRight(String.trimLeft(str, subset), subset)
     trimmed
   end
 
@@ -332,7 +317,7 @@ end`,
     repeat v in subset
       if trimmed[0] == v
         trimmed = String.slice(trimmed, 1, String.count(trimmed))
-        break
+        continue
       end
     end
     trimmed
@@ -343,7 +328,7 @@ end`,
     repeat v in subset
       if String.last(trimmed) == v
         trimmed = String.slice(trimmed, 0, String.count(trimmed) - 1)
-        break
+        continue
       end
     end
     trimmed
