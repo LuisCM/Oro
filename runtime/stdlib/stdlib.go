@@ -8,7 +8,7 @@ var Modules = []string{
 
 	`module Enum
 
-  val size = fn (array: Array) -> Int
+  val size = fn (array: Array) -> Integer
     var count = 0
     repeat v in array
       count += 1
@@ -116,39 +116,39 @@ end`,
   val pi = 3.14159265359
   val e = 2.718281828459
 
-  val floor = fn (nr: Float) -> Int
-    Int(nr - nr % 1)
+  val floor = fn (nr: Float) -> Integer
+    Integer(nr - nr % 1)
   end
 
-  val ceil = fn (nr: Float) -> Int
+  val ceil = fn (nr: Float) -> Integer
     val rem = nr % 1
     if rem == 0
-      return Int(nr)
+      return Integer(nr)
     end
-    nr > 0 ? Int(nr + (1 - rem)) : Int(nr - (1 + rem))
+    nr > 0 ? Integer(nr + (1 - rem)) : Integer(nr - (1 + rem))
   end
 
   val max = fn (nr1, nr2)
     if !Type.isNumber?(nr1) || !Type.isNumber?(nr2)
-      panic("Math.max() expects a Float or Int")
+      panic("Math.max() expects a Float or Integer")
     end
     return nr1 > nr2 ? nr1 : nr2
   end
 
   val min = fn (nr1, nr2)
     if !Type.isNumber?(nr1) || !Type.isNumber?(nr2)
-      panic("Math.min() expects a Float or Int")
+      panic("Math.min() expects a Float or Integer")
     end
     return nr1 > nr2 ? nr2 : nr1
   end
 
-  val random = fn (min: Int, max: Int) -> Int
+  val random = fn (min: Integer, max: Integer) -> Integer
     runtime_rand(min, max)
   end
 
   val abs = fn (nr)
     if !Type.isNumber?(nr)
-      panic("Math.abs() expects a Float or Int")
+      panic("Math.abs() expects a Float or Integer")
     end
     if nr < 0
       return -nr
@@ -158,7 +158,7 @@ end`,
 
   val pow = fn (nr, exp)
     if !Type.isNumber?(nr) || !Type.isNumber?(exp)
-      panic("Math.pow() expects a Float or Int")
+      panic("Math.pow() expects a Float or Integer")
     end
     nr ** exp
   end
@@ -172,7 +172,7 @@ end`,
   end
 
   val isNumber? = fn x
-    if typeof(x) == "Float" || typeof(x) == "Int"
+    if typeof(x) == "Float" || typeof(x) == "Integer"
       return true
     end
     false
@@ -182,8 +182,8 @@ end`,
     String(x)
   end
 
-  val toInt = fn x
-    Int(x)
+  val toInteger = fn x
+    Integer(x)
   end
 
   val toFloat = fn x
@@ -198,7 +198,7 @@ end`,
 
 	`module Dictionary
 
-  val size = fn (dict: Dictionary) -> Int
+  val size = fn (dict: Dictionary) -> Integer
     var count = 0
     repeat v in dict
       count += 1
@@ -250,7 +250,7 @@ end`,
 
 	`module String
 
-  val count = fn (str: String) -> Int
+  val count = fn (str: String) -> Integer
     var cnt = 0
     repeat v in str
       cnt += 1
@@ -292,7 +292,7 @@ end`,
     reversed
   end
 
-  val slice = fn (str: String, start: Int, length: Int) -> String
+  val slice = fn (str: String, start: Integer, length: Integer) -> String
     if start < 0 || length < 0
       panic("String.slice() expects positive start and length parameters")
     end

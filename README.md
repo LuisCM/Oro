@@ -17,7 +17,7 @@ It features mutable and immutable values, if and match conditionals, functions, 
 * [Data Types](#data-types)
     * [String](#string)
     * [Symbol](#symbol)
-    * [Int](#int)
+    * [Integer](#integer)
     * [Float](#float)
     * [Boolean](#boolean)
     * [Array](#array)
@@ -115,7 +115,7 @@ nr = "ten" // runtime error
 
 ## Data Types
 
-Oro supports 7 data types: `Boolean`, `String`, `Int`, `Float`, `Array`, `Dictionary`, `Symbol` and `Nil`.
+Oro supports 7 data types: `Boolean`, `String`, `Integer`, `Float`, `Array`, `Dictionary`, `Symbol` and `Nil`.
 
 ### String
 
@@ -167,7 +167,7 @@ when :windows
 end
 ```
 
-### Int
+### Integer
 
 Integers are whole numbers that support most of the arithmetic and bitwise operators, as you'll see later. They can be represented also as: binary with the 0b prefix, hexadecimal with the 0x prefix and octal with the 0o prefix.
 
@@ -326,21 +326,21 @@ val empty = nil
 
 ### Type Conversion
 
-Converting between types is handled in a few ways that produce exactly the same results. The `as` operator is probably the more convenient and more expressive of the bunch. Like all type conversion methods, it can convert to `String`, `Int`, `Float` and `Array`:
+Converting between types is handled in a few ways that produce exactly the same results. The `as` operator is probably the more convenient and more expressive of the bunch. Like all type conversion methods, it can convert to `String`, `Integer`, `Float` and `Array`:
 
 ```swift
 val nr = 10
 nr as String
-nr as Int
+nr as Integer
 nr as Float
 nr as Array
 ```
 
-Provided by the runtime are the appropriately named functions: `String()`, `Int()`, `Float()` and `Array()`.
+Provided by the runtime are the appropriately named functions: `String()`, `Integer()`, `Float()` and `Array()`.
 
 ```swift
 val str = String(10)
-val int = Int("10")
+val int = Integer("10")
 val fl = Float(10)
 val arr = Array(10)
 ```
@@ -349,7 +349,7 @@ The `Type` module of the Standard Library provides interfaces to those same func
 
 ```swift
 val str = Type.toString(10)
-val int = Type.toInt("10")
+val int = Type.toInteger("10")
 val fl = Type.toFloat(10)
 val arr = Type.toArray(10)
 ```
@@ -364,7 +364,7 @@ The `is` operator is specialized in checking types and should be the one you'll 
 
 ```swift
 val nr = 10
-if nr is Int
+if nr is Integer
   println("Yes, an integer")
 end
 ```
@@ -372,7 +372,7 @@ end
 There's also the `typeof()` runtime function and `Type.of()` from the Standard Library. They essentially do the same thing, but not only they're longer to write, but return strings. The above would be equivalent to:
 
 ```swift
-if Type.of(nr) == "Int"
+if Type.of(nr) == "Integer"
   println("Yes, an integer")
 end
 ```
@@ -486,7 +486,7 @@ Like in strong typed languages, type hinting can be a very useful feature to val
 This function call will produce output:
 
 ```swift
-val add = fn (x: Int, y: Int) -> Int
+val add = fn (x: Integer, y: Integer) -> Integer
   x + y
 end
 
@@ -517,7 +517,7 @@ writeln(architecture(4)) // 16
 They can be combined with type hinting and, obviously, need to be of the same declared type.
 
 ```swift
-val architecture = fn bits: Int = 6
+val architecture = fn bits: Integer = 6
   2 ** bits
 end
 

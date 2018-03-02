@@ -11,8 +11,8 @@ import (
 
 func TestError(t *testing.T) {
 	errors = []string{}
-	Error(Parse, token.Position{1, 1}, "Test rerror 1")
-	Error(Parse, token.Position{1, 1}, "Test rerror 2")
+	Error(Parse, token.Position{1, 1}, "Test error 1")
+	Error(Parse, token.Position{1, 1}, "Test error 2")
 	if len(errors) != 2 {
 		t.Errorf("Expected %d but got %d", 2, len(errors))
 	}
@@ -20,11 +20,11 @@ func TestError(t *testing.T) {
 
 func TestGetErrors(t *testing.T) {
 	errors = []string{}
-	Error(Parse, token.Position{1, 1}, "Test rerror 1")
-	Error(Runtime, token.Position{2, 1}, "Test rerror 2")
+	Error(Parse, token.Position{1, 1}, "Test error 1")
+	Error(Runtime, token.Position{2, 1}, "Test error 2")
 	expected := []string{
-		fmt.Sprintf("%s [Line %d:%d]: %s", Parse, 1, 1, "Test rerror 1"),
-		fmt.Sprintf("%s [Line %d:%d]: %s", Runtime, 2, 1, "Test rerror 2"),
+		fmt.Sprintf("%s [Line %d:%d]: %s", Parse, 1, 1, "Test error 1"),
+		fmt.Sprintf("%s [Line %d:%d]: %s", Runtime, 2, 1, "Test error 2"),
 	}
 	for i, k := range errors {
 		if k != expected[i] {
@@ -35,8 +35,8 @@ func TestGetErrors(t *testing.T) {
 
 func TestClearErrors(t *testing.T) {
 	errors = []string{}
-	Error(Parse, token.Position{1, 1}, "Test rerror 1")
-	Error(Parse, token.Position{1, 1}, "Test rerror 2")
+	Error(Parse, token.Position{1, 1}, "Test error 1")
+	Error(Parse, token.Position{1, 1}, "Test error 2")
 	ClearErrors()
 	if len(errors) != 0 {
 		t.Errorf("Expected %d but got %d", 0, len(errors))

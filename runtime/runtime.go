@@ -192,15 +192,15 @@ var FnRuntime = map[string]TRuntimeFn{
 		}
 	},
 
-	"Int": func(args ...Data) (Data, error) {
+	"Integer": func(args ...Data) (Data, error) {
 		if len(args) != 1 {
-			return nil, rerror.ErrorFmt("Int() expects exactly 1 argument")
+			return nil, rerror.ErrorFmt("Integer() expects exactly 1 argument")
 		}
 		switch object := args[0].(type) {
 		case *TString:
 			i, err := strconv.Atoi(object.Value)
 			if err != nil {
-				return nil, rerror.ErrorFmt("Int() can't convert '%s' to Integer", object.Value)
+				return nil, rerror.ErrorFmt("Integer() can't convert '%s' to Integer", object.Value)
 			}
 			return &TInteger{Value: int64(i)}, nil
 		case *TFloat:
@@ -214,7 +214,7 @@ var FnRuntime = map[string]TRuntimeFn{
 		case *TInteger:
 			return object, nil
 		default:
-			return nil, rerror.ErrorFmt("Int() can't convert '%s' to Integer", object.Type())
+			return nil, rerror.ErrorFmt("Integer() can't convert '%s' to Integer", object.Type())
 		}
 	},
 

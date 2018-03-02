@@ -15,7 +15,7 @@ import (
 const (
 	TTBoolean     = "Boolean"
 	TTString      = "String"
-	TTInteger     = "Int"
+	TTInteger     = "Integer"
 	TTFloat       = "Float"
 	TTArray       = "Array"
 	TTDictionary  = "Dictionary"
