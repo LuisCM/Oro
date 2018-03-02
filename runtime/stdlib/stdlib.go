@@ -345,12 +345,12 @@ end`,
     separator
   end
 
-  val split = fn (str: String, separator: String) -> Array
-    val count_sep = String.count(separator)
+  val split = fn (str: String, sep: String) -> Array
+    val count_sep = String.count(sep)
     var array = []
     var last_index = 0
     repeat i, v in str
-        if String.slice(str, i, count_sep) == separator
+        if String.slice(str, i, count_sep) == sep
           var curr = String.slice(str, last_index, i - last_index)
           if curr != ""
             array[] = curr
