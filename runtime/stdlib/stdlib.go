@@ -36,8 +36,8 @@ var Modules = []string{
     array[size(array) - 1]
   end
 
-  val insert = fn (array: Array, el) -> Array
-    array[] = el
+  val insert = fn (array: Array, element) -> Array
+    array[] = element
   end
 
   val delete = fn (array: Array, index) -> Array
