@@ -334,15 +334,15 @@ end`,
     trimmed
   end
 
-  val join = fn (array: Array, glue: String) -> String
-    var glued = ""
+  val join = fn (array: Array, sep: String) -> String
+    var separator = ""
     repeat v in array
-      glued += v + glue
+      separator += v + sep
     end
-    if String.count(glued) > String.count(glue)
-      return String.slice(glued, 0, String.count(glued) - String.count(glue))
+    if String.count(separator) > String.count(sep)
+      return String.slice(separator, 0, String.count(separator) - String.count(sep))
     end
-    glued
+    separator
   end
 
   val split = fn (str: String, separator: String) -> Array
